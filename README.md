@@ -1,34 +1,36 @@
 # Intuitive Physics Learning
 
-认知推理课程小组项目。
+认知推理课程小组项目，研究经验如何改变物理预期，以及不同状态更新方式对学习与迁移的影响。目前已完成一版小型解析合成实验。
 
-## 快速开始
+## 快速上手
 
 先[安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，然后在仓库根目录运行：
 
 ```bash
 uv sync --locked
-uv run python -c "import intuitive_physics; print(intuitive_physics.__version__)"
+uv run python -m intuitive_physics.experiment --config configs/smoke.toml --output outputs/_scratch/smoke
 ```
 
-uv 会准备 Python 和 `.venv` 环境，不需要手动激活。目前只有项目骨架，实验代码后续加入。
+uv 会准备 Python 3.12 和虚拟环境，无需手动激活。当前实验使用 CPU，无需物理引擎。
+以上命令仅做两步试跑；输出目录必须是新目录，再次运行时请更换名称。
 
-## 日常使用
+## 文档
 
-- 拉取代码后：`uv sync --locked`
-- 运行脚本：`uv run python 脚本路径.py`
-- 添加依赖：`uv add 包名`，并一起提交 `pyproject.toml` 和 `uv.lock`。
+- [项目结构](docs/structure.md)：各模块、配置和输出的用途。
+- [第一版实验](docs/first-experiment.md)：基本设计、运行方式、关键结果与当前结论。
 
-代码放在 `src/intuitive_physics/`；本地数据放在 `data/`，实验输出放在 `outputs/`。环境、数据和实验输出不提交 Git。
+## 协作开发
 
-## 共享 Skills
+拉取代码后运行 `uv sync --locked`。添加依赖使用 `uv add 包名`，一起提交 `pyproject.toml` 和 `uv.lock`。
+本地数据、虚拟环境和实验输出不提交 Git。
 
-共享 skills 随仓库放在 `.agents/skills/`，无需复制到个人目录。在 Codex 中打开本仓库，
-可自动匹配相关任务，也可以明确调用：
+```bash
+uv run ruff check .
+uv run ruff format --check .
+uv run pytest -q
+```
+
+仓库在 `.agents/skills/` 提供两套共享 skills，可在 Codex 中调用：
 
 - `$develop-intuitive-physics`：推进研究、实验和功能开发。
 - `$refactor-intuitive-physics`：保持既定行为的代码整理。
-
-例如：`使用 $develop-intuitive-physics 实现解析数据生成器。`
-如果拉取后未发现新 skills，重启 Codex 再试。外部项目记忆是个人可选配置，不随仓库共享。
-发现与调用规则参见 [Codex 官方文档](https://developers.openai.com/codex/skills)。

@@ -1,0 +1,28 @@
+# Reproduce the completed comparison. Split 31 is already observed, not a fresh test set.
+models = ["gru", "node", "euler"]
+seeds = [0, 1, 2, 3, 4]
+threads = 2
+
+[model]
+state_dim = 32
+
+[node]
+substeps = 1
+
+[euler]
+substeps = 4
+
+[train]
+steps = 3000
+batch_size = 64
+learning_rate = 0.001
+gradient_clip = 5.0
+validation_every = 100
+
+[data]
+queries_per_task = 24
+
+[eval]
+episodes = 2048
+validation_episodes = 256
+test_split = 31

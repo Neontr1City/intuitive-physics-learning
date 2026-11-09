@@ -1,0 +1,28 @@
+# Engineering check only; these two training steps cannot support research conclusions.
+models = ["gru", "node", "euler"]
+seeds = [0]
+threads = 2
+
+[model]
+state_dim = 32
+
+[node]
+substeps = 1
+
+[euler]
+substeps = 4
+
+[train]
+steps = 2
+batch_size = 16
+learning_rate = 0.001
+gradient_clip = 5.0
+validation_every = 1
+
+[data]
+queries_per_task = 4
+
+[eval]
+episodes = 64
+validation_episodes = 64
+test_split = 30
