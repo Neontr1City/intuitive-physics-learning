@@ -1,27 +1,22 @@
 # Intuitive Physics Learning
 
-认知推理课程四人小组项目：研究物理事件经验如何改变后续预测，并比较连续与离散的学习状态更新机制。
+认知推理课程小组项目，使用 Python 3.12 和 uv。
 
-当前状态：仓库初始化；尚未实现数据生成、模型训练或评测。
+## 快速开始
 
-## 开发环境
+先[安装 uv](https://docs.astral.sh/uv/getting-started/installation/)，然后在仓库根目录运行：
 
-使用 Python 3.11 或更新版本。在仓库根目录运行：
-
-```powershell
-python -m venv .venv
-.venv\Scripts\Activate.ps1
-python -m pip install -e .
-python -c "import intuitive_physics; print(intuitive_physics.__version__)"
+```bash
+uv sync --locked
+uv run python -c "import intuitive_physics; print(intuitive_physics.__version__)"
 ```
 
-目前仅提供可安装的包骨架，没有运行时依赖。数据生成和训练依赖在实现对应模块时确定并记录。
+uv 会准备 Python 和 `.venv` 环境，不需要手动激活。目前只有项目骨架，实验代码后续加入。
 
-## 目录约定
+## 日常使用
 
-- `src/intuitive_physics/`：后续数据生成、模型与评测代码。
-- `pyproject.toml`：Python 包配置和依赖声明。
-- 后续共享文档放入 `docs/`；实验配置放入 `configs/`；有实际验证对象后再添加 `tests/`。
-- 本地数据放入 `data/`，运行产物放入 `runs/` 或 `outputs/`；这些目录不进入 Git。
+- 拉取代码后：`uv sync --locked`
+- 运行脚本：`uv run python 脚本路径.py`
+- 添加依赖：`uv add 包名`，并一起提交 `pyproject.toml` 和 `uv.lock`。
 
-提交代码与可复现实验配置；不要提交虚拟环境、大型数据、模型权重或凭据。实验实现后需记录随机种子、配置、代码提交号与结果位置。
+代码放在 `src/intuitive_physics/`；本地数据放在 `data/`，实验输出放在 `outputs/`。环境、数据和实验输出不提交 Git。
