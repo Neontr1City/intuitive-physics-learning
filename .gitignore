@@ -1,0 +1,35 @@
+# Python and local tooling
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+build/
+dist/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+.idea/
+.vscode/
+
+# Generated experiment artifacts
+/data/
+/runs/
+/outputs/
+/checkpoints/
+/wandb/
+*.pt
+*.pth
+*.ckpt
+*.log
+
+# Machine-local settings and secrets
+.env
+.env.*
+!.env.example
+Thumbs.db
+.DS_Store
+~$*
